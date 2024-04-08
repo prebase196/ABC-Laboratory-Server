@@ -48,6 +48,9 @@ public class UserController {
     // Build Crate Users REST API
     @PostMapping
     public User createUser(@RequestBody User user) {
+    	if(user.getUserRole() == null) {
+    		user.setUserRole("patient");
+    	}
         return userRepo.save(user);
     }
 
